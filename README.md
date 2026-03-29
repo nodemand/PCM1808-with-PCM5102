@@ -1,4 +1,4 @@
-<h1>PCM1808 ADC and a PCM5102 DAC running on Raspberry Pi @ 96kHz</h1>
+<h1>PCM1808 ADC and a PCM5102 DAC running on Raspberry Pi @ 24 bits 96kHz</h1>
 
 The DTS file is for this ADC and DAC:<br>
 ADC: https://nl.aliexpress.com/item/32777376004.html<br>
