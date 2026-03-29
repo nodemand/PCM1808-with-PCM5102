@@ -42,17 +42,22 @@ save the file and reboot:<br>
 <b> sudo reboot now</b>
 
 does it appear?:<br>
-<b> arecord -l</b>
+<b>aplay -l && arecord -l</b>
 
 something like the following should show:<br>
-<b>card 0: pcm5108 [pcm5108], device 0: bcm2835-i2s-dir-hifi dir-hifi-0 [bcm2835-i2s-dir-hifi dir-hifi-0]<br>
+<b>**** List of PLAYBACK Hardware Devices ****<br>
+card 0: pcm5108 [pcm5108], device 1: bcm2835-i2s-dit-hifi dit-hifi-1 [bcm2835-i2s-dit-hifi dit-hifi-1]<br>
+  Subdevices: 1/1<br>
+  Subdevice #0: subdevice #0<br>
+**** List of CAPTURE Hardware Devices ****<br>
+card 0: pcm5108 [pcm5108], device 0: bcm2835-i2s-dir-hifi dir-hifi-0 [bcm2835-i2s-dir-hifi dir-hifi-0]<br>
   Subdevices: 1/1<br>
   Subdevice #0: subdevice #0</b>
 
 if yes then run to test:<br>
-<b>arecord -D hw:0,0 -f S32_LE -r 96000 -c 2 -V stereo test.wav</b>
+<b>arecord -D hw:pcm5108 -f S32_LE -r 96000 -c 2 -V stereo test.wav</b>
 
 to loop the input to the output do:<br>
-<b>alsaloop -C hw:0,0 -P hw:0,1 -r 96000 -f S32_LE</b>
+<b>alsaloop -C hw:pcm5108,0 -P hw:pcm5108,1 -r 96000 -f S32_LE</b>
 
 Have fun!
