@@ -50,7 +50,7 @@ something like the following should show:<br>
 if yes then run to test:<br>
 <b>arecord -D hw:0,0 -f S32_LE -r 96000 -c 2 -V stereo test.wav</b>
 
-to loop thr input to the output do:<br>
+to loop the input to the output do:<br>
 <b>alsaloop -C hw:0,0 -P hw:0,1 -r 96000 -f S32_LE</b>
 
 Have fun!
