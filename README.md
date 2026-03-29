@@ -1,6 +1,6 @@
 <h1>PCM1808 ADC and a PCM5102 DAC running on Raspberry Pi @ 24 bits 96kHz</h1>
 
-The DTS file is for a budgetfriendly soundcard using this ADC and DAC:<br>
+The DTS file is for a full-duplex soundcard using this ADC and DAC:<br>
 ADC: https://nl.aliexpress.com/item/32777376004.html<br>
 DAC: https://nl.aliexpress.com/item/1005006323878361.html
 
