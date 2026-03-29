@@ -1,0 +1,78 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&i2s>;
+        __overlay__ {
+            #sound-dai-cells = <0>;
+            status = "okay";
+        };
+    };
+
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            custom_osc: custom_osc {
+                compatible = "fixed-clock";
+                #clock-cells = <0>;
+                clock-frequency = <24576000>;
+            };
+
+            codec_out: codec-out {
+                compatible = "linux,spdif-dit";
+                #sound-dai-cells = <0>;
+                status = "okay";
+            };
+
+            codec_in: codec-in {
+                compatible = "linux,spdif-dir";
+                #sound-dai-cells = <0>;
+                status = "okay";
+            };
+
+            sound {
+                compatible = "simple-audio-card";
+                simple-audio-card,name = "pcm5108";
+                #address-cells = <1>;
+                #size-cells = <0>;
+
+                /* Link 0: PLAYBACK */
+                simple-audio-card,dai-link@0 {
+                    reg = <0>;
+                    format = "i2s";
+                    bitclock-master = <&out_codec>;
+                    frame-master = <&out_codec>;
+
+                    cpu {
+                        sound-dai = <&i2s>;
+                    };
+
+                    out_codec: codec {
+                        sound-dai = <&codec_out>;
+                        clocks = <&custom_osc>;
+                    };
+                };
+
+                /* Link 1: CAPTURE */
+                simple-audio-card,dai-link@1 {
+                    reg = <1>;
+                    format = "i2s";
+                    bitclock-master = <&in_codec>;
+                    frame-master = <&in_codec>;
+
+                    cpu {
+                        sound-dai = <&i2s>;
+                    };
+
+                    in_codec: codec {
+                        sound-dai = <&codec_in>;
+                        clocks = <&custom_osc>;
+                    };
+                };
+            };
+        };
+    };
+};
