@@ -16,7 +16,7 @@ hook up the ADC and DAC like this:<br>
 </ul>
 </b>
 
-Solder a wire from GND to FMY of the PCM1808 to select I2S mode. Solder the MD0 and MD1 pads of the PCM1808 to 3.3V to select 96kHz MASTER mode using the 24.576MHz oscillator (256 x Fs).
+Solder a wire from GND to FMY of the PCM1808 to select I2S mode. Solder MD0 and MD1 of the PCM1808 to 3.3V to select 96kHz MASTER mode using the 24.576MHz oscillator (256 x Fs). The PCM5102 autodetects the clocksignal and selects its SLAVE mode automatically.
 
 
 compile pcm5108.dts with:<br>
